@@ -1,0 +1,30 @@
+<div class="container-fluid">
+        <h2>Expenses List</h2>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Edit/Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let e of expenses; let i=index; let o=odd; let e=even;"
+              [ngClass]="{odd: o, even: e}">
+                <td>{{e.id}}</td>
+                <td>{{e.description}}</td>
+                <td>{{e.amount | currency}}</td>
+                <td>{{e.date | date}}</td>
+                <td>{{e.type}}</td>
+                <td><a routerLink="/expense-edit/{{e.id}}">Edit</a><br>
+                    <!-- <a href="option-to-delete">Delete</a></td> -->
+              </tr>
+            </tbody>
+          </table>
+        
+          
+        </div>
+        

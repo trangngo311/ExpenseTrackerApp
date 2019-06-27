@@ -1,0 +1,11 @@
+thead {
+    background-color: lightblue;
+}
+
+.even {
+    background-color: paleturquoise;
+}
+
+.odd {
+    background-color: lightcyan;
+}
