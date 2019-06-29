@@ -22,4 +22,9 @@ export class ExpensesComponent implements OnInit {
     .subscribe(expenses => this.expenses = expenses);
   }
 
+  delete(expense: Expense): void {
+    this.expenses = this.expenses.filter(e => e !== expense);
+    this.expenseService.deleteExpense(expense).subscribe();
+  }
+
 }

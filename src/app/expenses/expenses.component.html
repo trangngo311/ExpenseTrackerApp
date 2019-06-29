@@ -19,8 +19,9 @@
                 <td>{{e.amount | currency}}</td>
                 <td>{{e.date | date}}</td>
                 <td>{{e.type}}</td>
-                <td><a routerLink="/expense-edit/{{e.id}}">Edit</a><br>
-                    <!-- <a href="option-to-delete">Delete</a></td> -->
+                <td class="column-verticallineMiddle form-inline" style="vertical-align:middle;">
+                  <a routerLink="/expense-edit/{{e.id}}">Edit</a><br>
+                    <button class="btn btn-link" (click)="delete(e)">Delete</button></td>
               </tr>
             </tbody>
           </table>
