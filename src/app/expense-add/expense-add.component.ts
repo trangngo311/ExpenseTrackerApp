@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from '../expense';
 import { ExpenseService } from '../expense.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-expense-add',
@@ -10,14 +11,11 @@ import { ExpenseService } from '../expense.service';
 })
 export class ExpenseAddComponent implements OnInit {
 
-  expense: Expense;
-
   expenses: Expense[];
-
-  submitted = false;
 
   constructor(
     private expenseService: ExpenseService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -29,21 +27,17 @@ export class ExpenseAddComponent implements OnInit {
     .subscribe(expenses => this.expenses = expenses);
   }
 
-  // onSubmit() {
-  //   this.submitted = true;
-  //   this.newExpense();
-  // }
+  newExpense(description, amount, date, type): void {
+    let id = this.expenseService.genId(this.expenses);
+    let expense: Expense = {id:id, description: description, amount:+amount, 
+    date: date, type:type};
 
-  newExpense(): void {
-    const dummyExpense = {id: 200,
-    description: "New Expense",
-    amount: 23.25,
-    date: "06-30-2019",
-    type: "Celebration"};
-    this.expenseService.addExpense(dummyExpense)
+    this.expenseService.addExpense(expense)
     .subscribe(expense => {
       this.expenses.push(expense);
     });
+
+    this.router.navigate(['/expenses']);
   }
 
 }

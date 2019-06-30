@@ -5,29 +5,27 @@
         <form (ngSubmit)="onSubmit()" #expenseForm="ngForm">
         <div class="form-group">
             <label for="description">Description:</label>
-            <input type="text" class="form-control" id="description" required
-             name="description">
+            <input type="text" class="form-control" id="description" #description required>
         </div>
 
         <div class="form-group">
             <label for="amount">Amount:</label>
-            <input type="text" class="form-control" id="amount" required
-            name="amount">
+            <input type="text" class="form-control" id="amount" #amount required>
         </div>
 
         <div class="form-group">
             <label for="date">Date:</label>
-                <input type="text" class="form-control" id="date" required
-                name="date">
+                <input type="text" class="form-control" id="date" #date required>
         </div>
 
         <div class="form-group">
             <label for="type"> Type:</label>
-                <input type="text" class="form-control" id="type" required
-                name="type">
+                <input type="text" class="form-control" id="type" #type required>
         </div>
     
-        <button type="submit" class="btn btn-success" (click)="newExpense()">Add Expense</button>
+        <button type="submit" class="btn btn-success" (click)="newExpense(
+            description.value, amount.value, date.value, type.value
+        ); heroForm.reset()">Add Expense</button>
         </form>
     
     </div>
