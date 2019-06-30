@@ -1,31 +1,35 @@
-<div class="container-fluid">
-        <h2>Expenses List</h2>
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Edit/Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let e of expenses; let i=index; let o=odd; let e=even;"
-              [ngClass]="{odd: o, even: e}">
-                <td>{{e.id}}</td>
-                <td>{{e.description}}</td>
-                <td>{{e.amount | currency}}</td>
-                <td>{{e.date | date}}</td>
-                <td>{{e.type}}</td>
-                <td class="column-verticallineMiddle form-inline" style="vertical-align:middle;">
-                  <a routerLink="/expense-edit/{{e.id}}">Edit</a><br>
-                    <button class="btn btn-link" (click)="delete(e)">Delete</button></td>
-              </tr>
-            </tbody>
-          </table>
+<div class="container">
+  <br><h2>Expenses List</h2><br>
+
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Edit/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of expenses; let i=index; let o=odd; let e=even;"
+        [ngClass]="{odd: o, even: e}">
+          <td>{{e.id}}</td>
+          <td>{{e.description}}</td>
+          <td>{{e.amount | currency}}</td>
+          <td>{{e.date | date}}</td>
+          <td>{{e.type}}</td>
+          <td class="column-verticallineMiddle form-inline" style="vertical-align:middle;">
+            <a class="btn btn-primary btn-sm" routerLink="/expense-edit/{{e.id}}" 
+            role="button">Edit</a><br>
+              <button class="btn btn-danger btn-sm" 
+              (click)="delete(e)" role="button">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
         
+    <br><a class="btn btn-primary float-right" routerLink="/expense-add" role="button">Add</a>
           
-        </div>
+  </div>
         

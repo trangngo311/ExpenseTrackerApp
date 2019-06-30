@@ -1,8 +1,9 @@
-<div class="container" *ngIf="expense">
-    
-        <br><h3>Expense #{{expense.id}} Edit</h3><br>
+<div class="container-fluid">
 
-        <form>
+    <form #expenseForm="ngForm">
+
+        {{diagnostic}}
+
         <div class="form-group">
             <label for="description">Description:</label>
             <input type="text" class="form-control" id="description" required
@@ -27,8 +28,8 @@
                 [(ngModel)]="expense.type" name="type">
         </div>
     
-        <button type="submit" class="btn btn-success" 
-        [disabled]="!expenseForm.valid" (click)="save()">Save Expense</button>
-        </form>
+        <button type="submit" class="btn btn-success" [disabled]="!expenseForm.valid">Submit</button>
     
-    </div>
+    </form>
+
+</div>

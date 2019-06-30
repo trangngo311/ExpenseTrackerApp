@@ -1,8 +1,23 @@
-<nav>
-  <h2>Expenses</h2>
-  <h2>Charts</h2>
-  <h2>Log In</h2>
-  <h2>Log Out</h2>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/expenses">Expense Tracker App</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/expenses">Expenses <span class="sr-only">(current)</span></a>
+          </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Charts</a>
+          </li> -->
+          <!-- <li><a class="navbar-brand" routerLink="/expenses">Expenses</a></li>
+          <li>Charts</li>
+          <li>Log In</li>
+          <li>Log Out</li> -->
+        </ul>
+    </div>
 </nav>
 
 <router-outlet></router-outlet>

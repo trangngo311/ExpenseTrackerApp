@@ -19,6 +19,11 @@ export class ExpenseService {
     private http: HttpClient
   ) { }
 
+  genId(expenses: Expense[]): number {
+    return expenses.length > 0 ? 
+    Math.max(...expenses.map(expense => expense.id)) + 1 : 100;
+  }
+
   getExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>(this.expensesUrl)
     .pipe(
@@ -30,6 +35,20 @@ export class ExpenseService {
     const url = `${this.expensesUrl}/${id}`;
     return this.http.get<Expense>(url).pipe(
       catchError(this.handleError<Expense>(`getExpense id=${id}`))
+    );
+  }
+
+  updateExpense(expense: Expense): Observable<any> {
+    return this.http.put(this.expensesUrl, expense, httpOptions)
+    .pipe(
+      catchError(this.handleError<any>('updateExpense'))
+    );
+  }
+
+  addExpense(expense: Expense): Observable<Expense> {
+    return this.http.post<Expense>(this.expensesUrl, expense, httpOptions)
+    .pipe(
+      catchError(this.handleError<any>('addExpense'))
     );
   }
 
