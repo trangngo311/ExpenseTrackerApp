@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ExpenseAddComponent implements OnInit {
 
   expenses: Expense[];
+  // private query:string;
 
   constructor(
     private expenseService: ExpenseService,
@@ -27,7 +28,7 @@ export class ExpenseAddComponent implements OnInit {
     .subscribe(expenses => this.expenses = expenses);
   }
 
-  newExpense(description, amount, date, type): void {
+  addNewExpense(description, amount, date, type): void {
     let id = this.expenseService.genId(this.expenses);
     let expense: Expense = {id:id, description: description, amount:+amount, 
     date: date, type:type};
@@ -39,5 +40,15 @@ export class ExpenseAddComponent implements OnInit {
 
     this.router.navigate(['/expenses']);
   }
+
+  // onSubmit() {
+  //   let id = this.expenseService.genId(this.expenses);
+  //   this.expenseService.addExpense(this.expense)
+  //   .subscribe(expense => {
+  //     this.expenses.push(expense);
+  //   });
+
+  //   this.router.navigate(['/expenses']);
+  // }
 
 }

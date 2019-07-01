@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterByPipe } from '../app/filter-by.pipe'
 
 import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -22,7 +23,8 @@ import { ExpenseAddComponent } from './expense-add/expense-add.component';
     ExpenseEditComponent,
     PageNotFoundComponent,
     ExpenseFormComponent,
-    ExpenseAddComponent
+    ExpenseAddComponent,
+    FilterByPipe,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { ExpenseAddComponent } from './expense-add/expense-add.component';
       InMemoryDataService, {dataEncapsulation: false}
     ),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

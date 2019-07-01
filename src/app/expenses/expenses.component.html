@@ -1,6 +1,13 @@
 <div class="container">
   <br><h2>Expenses List</h2><br>
 
+  <div class="form-group">
+  <label for='typeQuery'>Filter By Type: </label>
+  <input type="text" class="form-control" id='typeQuery' [(ngModel)]='query'>
+  </div>
+
+
+
   <table class="table table-hover">
       <thead>
         <tr>
@@ -13,7 +20,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let e of expenses; let i=index; let o=odd; let e=even;"
+        <!-- <span *ngIf="query;else elseBock">
+        <tr *ngFor="let e of expenses | filterBy : query; let i=index; let o=odd; let e=even;"
         [ngClass]="{odd: o, even: e}">
           <td>{{e.id}}</td>
           <td>{{e.description}}</td>
@@ -26,6 +34,22 @@
               <button class="btn btn-danger btn-sm" 
               (click)="delete(e)" role="button">Delete</button></td>
         </tr>
+      </span> -->
+        <!-- <ng-template #elseBlock> -->
+            <tr *ngFor="let e of expenses; let i=index; let o=odd; let e=even;"
+            [ngClass]="{odd: o, even: e}">
+              <td>{{e.id}}</td>
+              <td>{{e.description}}</td>
+              <td>{{e.amount | currency}}</td>
+              <td>{{e.date | date}}</td>
+              <td>{{e.type}}</td>
+              <td class="column-verticallineMiddle form-inline" style="vertical-align:middle;">
+                <a class="btn btn-primary btn-sm" routerLink="/expense-edit/{{e.id}}" 
+                role="button">Edit</a><br>
+                  <button class="btn btn-danger btn-sm" 
+                  (click)="delete(e)" role="button">Delete</button></td>
+            </tr>
+        <!-- </ng-template> -->
       </tbody>
     </table>
         
